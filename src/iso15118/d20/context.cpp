@@ -53,12 +53,13 @@ message_20::Type MessageExchange::peek_request_type() const {
 
 Context::Context(session::feedback::Callbacks feedback_callbacks, session::SessionLogger& logger,
                  d20::SessionConfig session_config_, const std::optional<ControlEvent>& current_control_event_,
-                 MessageExchange& message_exchange_) :
+                 MessageExchange& message_exchange_, Timeouts& timeouts_) :
     feedback(std::move(feedback_callbacks)),
     log(logger),
     session_config(std::move(session_config_)),
     current_control_event{current_control_event_},
-    message_exchange(message_exchange_) {
+    message_exchange(message_exchange_),
+    timeouts(timeouts_) {
 }
 
 std::unique_ptr<message_20::Variant> Context::pull_request() {
