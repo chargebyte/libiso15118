@@ -71,7 +71,6 @@ if (ISO15118_INSTALL)
     install(
         DIRECTORY include/
         TYPE INCLUDE
-        PATTERN "detail" EXCLUDE
     )
 
     evc_setup_package(
